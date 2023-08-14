@@ -1,0 +1,35 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dev
+
+images:
+  - name: nginx
+    newTag: '1.25'
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      version: v1
+      kind: Service
+      name: nginx-service
+    patch: |-
+      - op: replace
+        path: /spec/ports/0/nodePort
+        value: 32001
+  - target:
+      version: v1
+      kind: ConfigMap
+      name: index-html-configmap
+    patch: |-
+      - op: replace
+        path: /data/index.html
+        value: |
+          <html>
+          <h1>Welcome</h1>
+          </br>
+          <h1>Hi! Hello from dev </h1>
+          </html
