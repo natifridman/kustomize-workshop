@@ -7,17 +7,19 @@ This repo is for practicing the basics of Kustomize.
 - `kubectl` client
 
 ## Kustomize
-Kustomize lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.
+[Kustomize](https://kustomize.io/) lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.
 - Kustomize is a patching framework
 - Enables environment specific changes to be introduced without duplicating YAML unnecessarily
 - Unlike templating frameworks, all YAML can be directly applied
 - Kustomize is included in kubectl and oc starting in 1.14
 
 <br/>
-Kustomize is organized in a hierarchical directory structure of *bases* and *overlays*.
-- A *base* is a directory with a kustomization.yaml file that contains a set of resources and associated customization.
+
+Kustomize is organized in a hierarchical directory structure of **bases** and **overlays**.
+
+- A **base** is a directory with a kustomization.yaml file that contains a set of resources and associated customization.
   - A base has no knowledge of an overlay and can be used in multiple overlays.
-- An *overlay* is a directory with a kustomization.yaml file that references other kustomization directories
+- An **overlay** is a directory with a kustomization.yaml file that references other kustomization directories
   - An overlay may aggregate multiple bases/overlays and may apply additional customization to them.
 
 ## Running the demo
@@ -43,7 +45,7 @@ overlay
     └── kustomization.yaml
 ```
 
-In both overlays we are patching the config map and the node port, while we are also patching the container image.
+In both overlays we are patching the config map and the node port, while we are also patching the container image in the dev environment.
 
 ### Build the Kustomization
 We can build the Kustomization manifests with `kubectl` client
