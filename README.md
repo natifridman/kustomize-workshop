@@ -29,6 +29,7 @@ First, let's take a look at the base directory:
 base
 ├── index-html-configmap.yaml
 ├── kustomization.yaml
+├── namespace.yaml
 ├── nginx-service.yaml
 └── nginx.yaml
 ```
